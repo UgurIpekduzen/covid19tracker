@@ -5,6 +5,7 @@ import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'total_cases.dart';
 import 'worldwise_cases.dart';
+import 'most_effected_countries.dart';
 
 class HomePage extends StatefulWidget {
 
@@ -27,6 +28,15 @@ class _HomePageState extends State<HomePage> {
   void initState() {
     super.initState();
     this.getJsonData();
+  }
+
+  List countryData;
+  fetchCountryData() async {
+    http.Response response =
+        await http.get('https://corona.lmao.ninja/v3/covid-19/countries?sort=cases');
+    setState(() {
+      countryData = json.decode(response.body);
+    });
   }
 
   Future <Tcases> getJsonData() async
@@ -53,7 +63,6 @@ class _HomePageState extends State<HomePage> {
         centerTitle: true,
         title: Text('COVID-19 Tracker'),
         backgroundColor: Color(0xFFfe9900),
-       // backgroundColor: Color(0xFF00A86B),
       ),
       backgroundColor: Colors.black,
       body: SingleChildScrollView(
@@ -63,7 +72,6 @@ class _HomePageState extends State<HomePage> {
         mainAxisAlignment: MainAxisAlignment.start,
        crossAxisAlignment: CrossAxisAlignment.start,
 
-       
        children: <Widget>[
             
           Padding(padding: EdgeInsets.only(top : 20)),
@@ -132,6 +140,11 @@ class _HomePageState extends State<HomePage> {
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
+      countryData == null
+                ? Container()
+                : MostAffectedPanel(
+                    countryData: countryData,
+                  ),
        Padding(padding: EdgeInsets.only(top :20.0)),
        Container(
          child:Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -165,8 +178,7 @@ class _HomePageState extends State<HomePage> {
           ],
              
              )
-       )
-          ,
+       ),
     )
     ) 
     );    
