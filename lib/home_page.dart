@@ -140,6 +140,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       Container(
+<<<<<<< HEAD
            
             margin: EdgeInsets.symmetric( horizontal: 20),
             // padding: const EdgeInsets.symmetric(vertical: 5),
@@ -175,6 +176,37 @@ class _HomePageState extends State<HomePage> {
                     )
                   ),
                 ),
+=======
+            decoration: BoxDecoration(
+              color: Color(0xFF292929),
+              // border: Border.all(color: Color(0xFFfe9900), width: 5),
+              border: Border(
+                left: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 5,
+                ),
+                right: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 5,
+                ),
+                top: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 2.5,
+                ),
+                bottom: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 2.5,
+                ),
+              )
+            ),
+            margin: EdgeInsets.symmetric( horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child : ListTile(
+              title: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children : <Widget>[
+                Text("Countries",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+>>>>>>> master
             ]
           ) 
       ),

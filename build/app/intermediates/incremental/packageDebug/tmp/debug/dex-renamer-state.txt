@@ -1,4 +1,8 @@
+<<<<<<< HEAD
 #Sat Nov 28 21:22:40 EET 2020
+=======
+#Sat Nov 28 18:17:33 EET 2020
+>>>>>>> master
 base.0=/home/uipkdzn/Repos/covid19tracker/build/app/intermediates/dex/debug/mergeDexDebug/out/classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
