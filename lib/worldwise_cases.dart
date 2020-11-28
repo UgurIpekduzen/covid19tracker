@@ -32,10 +32,8 @@ class _WorldState extends State<World> {
     return Scaffold(
       appBar: AppBar(
         actions: <Widget>[
-          IconButton(icon: Icon(Icons.search),onPressed: (){
-
+          IconButton(icon: Icon(Icons.search), onPressed: (){
             showSearch(context: context, delegate: Search(countryData));
-
           },)
         ],
         title: Text('Countrywise Statistics'),
@@ -77,30 +75,31 @@ class _WorldState extends State<World> {
                         Expanded(
                             child: Container(
                           child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
-                                'CONFIRMED:' +
+                                'Confirmed:' +
                                     countryData[index]['cases'].toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.red),
                               ),
                               Text(
-                                'ACTIVE:' +
+                                'Active:' +
                                     countryData[index]['active'].toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.blue),
                               ),
                               Text(
-                                'RECOVERED:' +
+                                'Recovered:' +
                                     countryData[index]['recovered'].toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,
                                     color: Colors.green),
                               ),
                               Text(
-                                'DEATHS:' +
+                                'Deaths:' +
                                     countryData[index]['deaths'].toString(),
                                 style: TextStyle(
                                     fontWeight: FontWeight.bold,

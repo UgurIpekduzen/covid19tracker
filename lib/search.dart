@@ -11,7 +11,6 @@ class Search extends SearchDelegate{
    return [
      IconButton(icon: Icon(Icons.clear), onPressed: (){
        query='';
-
      })
    ];
   }
@@ -20,22 +19,21 @@ class Search extends SearchDelegate{
   Widget buildLeading(BuildContext context) {
     return IconButton(icon: Icon(Icons.arrow_back_ios),onPressed: (){
       Navigator.pop(context);
-    },);
+    });
   }
 
   @override
   Widget buildResults(BuildContext context) {
-return Container();
+    return Container();
   }
 
   @override
   Widget buildSuggestions(BuildContext context)
   {
-    final suggestionList
-         =
-           query.isEmpty?
+    final suggestionList = query.isEmpty ?
            countryList:
            countryList.where((element) => element['country'].toString().toLowerCase().startsWith(query)).toList();
+    
     return Scaffold(
       backgroundColor: Colors.black,
       body:ListView.builder(
@@ -72,28 +70,28 @@ return Container();
                       child: Column(
                         children: <Widget>[
                           Text(
-                            'CONFIRMED:' +
+                            'Confirmed:' +
                                 suggestionList[index]['cases'].toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.red),
                           ),
                           Text(
-                            'ACTIVE:' +
+                            'Active:' +
                                 suggestionList[index]['active'].toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.blue),
                           ),
                           Text(
-                            'RECOVERED:' +
+                            'Recovered:' +
                                 suggestionList[index]['recovered'].toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,
                                 color: Colors.green),
                           ),
                           Text(
-                            'DEATHS:' +
+                            'Deaths:' +
                                 suggestionList[index]['deaths'].toString(),
                             style: TextStyle(
                                 fontWeight: FontWeight.bold,

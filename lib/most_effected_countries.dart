@@ -13,27 +13,22 @@ class MostAffectedPanel extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Container(
-            margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
-            child: Row(
+            decoration: BoxDecoration(
+              color: Color(0xFF292929),
+              border: Border.all(color: Color(0xFFfe9900), width: 5),
+            ),
+            margin: EdgeInsets.symmetric( horizontal: 20),
+            padding: const EdgeInsets.symmetric(vertical: 10),
+            child: Row(mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: <Widget>[
                 Image.network(
                   countryData[index]['countryInfo']['flag'],
-                  height: 25,
-                ),
-                SizedBox(
-                  width: 10,
+                  height: 30,
                 ),
                 Text(
-                  countryData[index]['country'],
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  'Deaths:' + countryData[index]['deaths'].toString(),
+                  countryData[index]['deaths'].toString(),
                   style:
-                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold),
+                      TextStyle(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 22),
                 )
               ],
             ),

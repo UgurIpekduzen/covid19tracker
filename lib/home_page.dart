@@ -24,12 +24,6 @@ class _HomePageState extends State<HomePage> {
       ));
   }
 
-   @override
-  void initState() {
-    super.initState();
-    this.getJsonData();
-  }
-
   List countryData;
   fetchCountryData() async {
     http.Response response =
@@ -37,6 +31,13 @@ class _HomePageState extends State<HomePage> {
     setState(() {
       countryData = json.decode(response.body);
     });
+  }
+
+   @override
+  void initState() {
+    fetchCountryData();
+    this.getJsonData();
+    super.initState();
   }
 
   Future <Tcases> getJsonData() async
@@ -74,14 +75,14 @@ class _HomePageState extends State<HomePage> {
 
        children: <Widget>[
             
-          Padding(padding: EdgeInsets.only(top : 20)),
+          Padding(padding: EdgeInsets.only(top : 10)),
 
          Row(
            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
            children:<Widget>[
             Text('Worldwide statistics',style: TextStyle(color:Colors.white,fontSize :22, fontWeight: FontWeight.bold)),
-            Padding(padding: EdgeInsets.only(top:10.0)),
-            ]
+            Padding(padding: EdgeInsets.only(top:10)),
+          ]
          ),
         FutureBuilder<Tcases>(
 
@@ -134,50 +135,51 @@ class _HomePageState extends State<HomePage> {
         }
        ),
       Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 10.0),
+        padding: const EdgeInsets.symmetric(horizontal: 5),
         child: Text(
           'Most affected Countries',
           style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold, color: Colors.white),
         ),
       ),
+      Card(color: Color(0xFF292929),
+        child : ListTile(
+          title: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+          children : <Widget>[
+              Text("Countries",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+              Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+            ]
+          ) 
+        )
+      ),
       countryData == null
-                ? Container()
-                : MostAffectedPanel(
-                    countryData: countryData,
-                  ),
-       Padding(padding: EdgeInsets.only(top :20.0)),
+          ? Container()
+          : MostAffectedPanel(
+              countryData: countryData,
+            ),
        Container(
-         child:Row( mainAxisAlignment: MainAxisAlignment.spaceBetween,
-           children: <Widget>[ 
-            Card(
-                        child :Container(color: Color(0xFF292929),
-                        child : Center(
-                        child: Column( 
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children : <Widget>[
-
-                          
-                      Padding(padding: EdgeInsets.only(top :20.0)),
-                      Padding(padding: EdgeInsets.all(10)),
-                        OutlineButton(
-                borderSide: BorderSide(color : Color(0xFFfe9900)),
-
-                        onPressed: ()=> navigateToWorld(),
-                      
+          child:Row( mainAxisAlignment: MainAxisAlignment.spaceAround,
+            children: <Widget>[ 
+              Card(
+                child :Container(color: Color(0xFF292929),
+                  child : Center(
+                  child: Column( 
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
+                  children : <Widget>[
+                    OutlineButton(
+                      padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                      borderSide: BorderSide(color : Color(0xFFfe9900)),
+                      onPressed: ()=> navigateToWorld(),
                       child : Text("Countrywise Statistics",style: TextStyle(fontSize: 15,color:Color(0xFFfe9900),fontWeight: FontWeight.bold),),
-                          ),
-
-                      ]))
-
-
-            ) ),
-     
-           ]
-           ) ),
-          ],
-             
-             )
+                    ),
+                  ]))
+                ) 
+              ),
+            ]
+          )
+        ),
+      ],   
+    )
        ),
     )
     ) 

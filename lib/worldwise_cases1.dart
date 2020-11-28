@@ -130,15 +130,12 @@ class _WorldState extends State<World> {
    return response.data;
 }
 
-
-  
  @override
  void initState()
  {
    super.initState();
    datas = getData();
  }
-
 
 @override
 Widget build(BuildContext context)
