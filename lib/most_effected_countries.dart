@@ -15,7 +15,25 @@ class MostAffectedPanel extends StatelessWidget {
           return Container(
             decoration: BoxDecoration(
               color: Color(0xFF292929),
-              border: Border.all(color: Color(0xFFfe9900), width: 5),
+              // border: Border.all(color: Color(0xFFfe9900), width: 5),
+              border: Border(
+                left: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 5,
+                ),
+                right: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 5,
+                ),
+                top: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 2.5,
+                ),
+                bottom: BorderSide(
+                  color: Color(0xFFfe9900),
+                  width: 2.5,
+                ),
+              )
             ),
             margin: EdgeInsets.symmetric( horizontal: 20),
             padding: const EdgeInsets.symmetric(vertical: 10),
