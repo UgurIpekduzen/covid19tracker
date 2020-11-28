@@ -125,13 +125,11 @@ class _HomePageState extends State<HomePage> {
             
             ]);
           }
-          else if(SnapShot.hasError)
-          {
+          else if(SnapShot.hasError){
             return Text(SnapShot.error.toString());
           }
 
           return CircularProgressIndicator();
-
         }
        ),
       Padding(
@@ -142,38 +140,43 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       Container(
-            decoration: BoxDecoration(
-              color: Color(0xFF292929),
-              // border: Border.all(color: Color(0xFFfe9900), width: 5),
-              border: Border(
-                left: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 5,
-                ),
-                right: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 5,
-                ),
-                top: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 2.5,
-                ),
-                bottom: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 2.5,
-                ),
-              )
-            ),
+           
             margin: EdgeInsets.symmetric( horizontal: 20),
-            padding: const EdgeInsets.symmetric(vertical: 10),
-            child : ListTile(
-              title: Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            // padding: const EdgeInsets.symmetric(vertical: 5),
+            child : Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children : <Widget>[
-                Text("Countries",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.grey[800],
+                      border: Border.all(color: Colors.grey[800], width: 3)
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Text("Countries",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),)
+                      ],
+                    )
+                  ),
+                ),
+                Expanded(
+                  flex: 5,
+                  child: Container(
+                    decoration: BoxDecoration(
+                      color: Colors.red[900],
+                      border: Border.all(color: Colors.red[900], width: 3)
+                    ),
+                    padding: const EdgeInsets.all(16),
+                    child: Column(
+                      children: [
+                        Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                      ],
+                    )
+                  ),
+                ),
             ]
           ) 
-        )
       ),
       // Card(color: Color(0xFF292929),
       //   child : ListTile(
@@ -200,6 +203,7 @@ class _HomePageState extends State<HomePage> {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children : <Widget>[
+
                     OutlineButton(
                       padding: const EdgeInsets.symmetric(vertical: 10, horizontal: 10),
                       borderSide: BorderSide(color : Color(0xFFfe9900)),
