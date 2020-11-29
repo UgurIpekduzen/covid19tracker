@@ -7,6 +7,8 @@ import 'total_cases.dart';
 import 'worldwise_cases.dart';
 import 'most_effected_countries.dart';
 
+double edgeCurve = 10;
+
 class HomePage extends StatefulWidget {
 
   
@@ -62,10 +64,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('#StayHome', style: TextStyle(color:Colors.white,fontSize :25, fontWeight: FontWeight.bold)),
+        title: Text('#StayHome', style: TextStyle(color:Colors.white,fontSize :30, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal[400],
       ),
-      backgroundColor: Colors.black,
+      backgroundColor: Colors.green[50],
       body: SingleChildScrollView(
         child:  Container(
        child : Center(
@@ -88,7 +90,7 @@ class _HomePageState extends State<HomePage> {
           margin: EdgeInsets.all(5),
           child: Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Worldwide Statistics',style: TextStyle(color:Colors.white,fontSize :25, fontWeight: FontWeight.bold))
+              Text('Worldwide Statistics',style: TextStyle(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
             ],
           )
         ),
@@ -100,120 +102,129 @@ class _HomePageState extends State<HomePage> {
           if(SnapShot.hasData)
           {
             final covid = SnapShot.data;
-            return Column(
-              children : <Widget>[
-                Container(
-                  margin: EdgeInsets.symmetric( horizontal: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.blue,
-                            border: Border.all(color: Colors.blue, width: 3)
+            return Center(
+              child: Container(
+                padding: const EdgeInsets.all(8),
+                child: Column(
+                children : <Widget>[
+                    Container(
+                      margin: EdgeInsets.symmetric( horizontal: 20),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                border: Border.all(color: Colors.blue, width: 3),
+                                borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("Total Cases ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("Total Cases ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.blue[300],
-                            border: Border.all(color: Colors.blue[300], width: 3)
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.blue[300],
+                                border: Border.all(color: Colors.blue[300], width: 3),
+                                borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("${covid.cases} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("${covid.cases} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric( horizontal: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.red[900],
-                            border: Border.all(color: Colors.red[900], width: 3)
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric( horizontal: 20),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.red[900],
+                                border: Border.all(color: Colors.red[900], width: 3)
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.red[500],
-                            border: Border.all(color: Colors.red[500], width: 3)
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.red[500],
+                                border: Border.all(color: Colors.red[500], width: 3)
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("${covid.deaths} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("${covid.deaths} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
-                ),
-                Container(
-                  margin: EdgeInsets.symmetric( horizontal: 20),
-                  child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green,
-                            border: Border.all(color: Colors.green, width: 3)
+                    ),
+                    Container(
+                      margin: EdgeInsets.symmetric( horizontal: 20),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                border: Border.all(color: Colors.green, width: 3),
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(edgeCurve))
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("Recovered",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("Recovered",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
-                      ),
-                      Expanded(
-                        flex: 5,
-                        child: Container(
-                          decoration: BoxDecoration(
-                            color: Colors.green[300],
-                            border: Border.all(color:Colors.green[300], width: 3)
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green[300],
+                                border: Border.all(color:Colors.green[300], width: 3),
+                                borderRadius: BorderRadius.only(bottomRight: Radius.circular(edgeCurve))
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("${covid.recovered} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
                           ),
-                          padding: const EdgeInsets.all(10),
-                          child: Column(
-                            children: [
-                              Text("${covid.recovered} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                            ],
-                          )
-                        ),
+                        ],
                       ),
-                    ],
-                  ),
+                    )
+                  ]
                 )
-              ]
+              ) 
             );
           }
           else if(SnapShot.hasError){
@@ -227,12 +238,12 @@ class _HomePageState extends State<HomePage> {
         margin: EdgeInsets.all(5),
         child: Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Most Affected Countries',style: TextStyle(color:Colors.white,fontSize :25, fontWeight: FontWeight.bold))
+            Text('Most Affected Countries',style: TextStyle(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
           ],
         )
       ),
       Container(
-            margin: EdgeInsets.symmetric( horizontal: 20),
+            margin: EdgeInsets.symmetric(horizontal: 30),
             // padding: const EdgeInsets.symmetric(vertical: 5),
             child : Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children : <Widget>[
@@ -240,8 +251,9 @@ class _HomePageState extends State<HomePage> {
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.grey[800],
-                      border: Border.all(color: Colors.grey[800], width: 3)
+                      color: Colors.teal[800],
+                      border: Border.all(color: Colors.teal[800], width: 3),
+                      borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Column(
@@ -256,7 +268,8 @@ class _HomePageState extends State<HomePage> {
                   child: Container(
                     decoration: BoxDecoration(
                       color: Colors.red[900],
-                      border: Border.all(color: Colors.red[900], width: 3)
+                      border: Border.all(color: Colors.red[900], width: 3),
+                      borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Column(
