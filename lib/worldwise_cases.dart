@@ -37,7 +37,7 @@ class _WorldState extends State<World> {
           },)
         ],
         title: Text('Countrywise Statistics'),
-        backgroundColor: Color(0xFFfe9900)
+        backgroundColor: Colors.teal[400]
       ),
       backgroundColor: Colors.black,
       body: countryData == null

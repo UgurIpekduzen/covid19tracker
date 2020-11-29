@@ -1,5 +1,4 @@
 import 'dart:developer';
-
 import 'package:flutter/material.dart';
 
 class MostAffectedPanel extends StatelessWidget {
@@ -15,31 +14,6 @@ class MostAffectedPanel extends StatelessWidget {
         physics: NeverScrollableScrollPhysics(),
         itemBuilder: (context, index) {
           return Container(
-<<<<<<< HEAD
-=======
-            decoration: BoxDecoration(
-              color: Color(0xFF292929),
-              // border: Border.all(color: Color(0xFFfe9900), width: 5),
-              border: Border(
-                left: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 5,
-                ),
-                right: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 5,
-                ),
-                top: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 2.5,
-                ),
-                bottom: BorderSide(
-                  color: Color(0xFFfe9900),
-                  width: 2.5,
-                ),
-              )
-            ),
->>>>>>> master
             margin: EdgeInsets.symmetric( horizontal: 20),
             child: Row(mainAxisAlignment: MainAxisAlignment.center,
               children: [
