@@ -27,6 +27,12 @@ class _WorldState extends State<World> {
     super.initState();
   }
 
+  Future <Null> refreshCountryStats() async {
+    await Future.delayed(Duration(seconds: 2));
+    initState();
+    return null;
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,15 +42,17 @@ class _WorldState extends State<World> {
             showSearch(context: context, delegate: Search(countryData));
           },)
         ],
-        title: Text('Countrywise Statistics', style: GoogleFonts.cabin()),
+        title: Text('Countrywise Statistics', style: GoogleFonts.cabin(fontSize: 25)),
         backgroundColor: Colors.teal[600]
       ),
       backgroundColor: Colors.white,
       body: countryData == null
-          ? Center(
+          ?
+            Center(
               child: CircularProgressIndicator(),
             )
-          : ListView.builder(
+          : RefreshIndicator( 
+            child: ListView.builder(
               itemBuilder: (context, index) {
                 return Card(
                   color: Colors.teal[100],
@@ -57,7 +65,7 @@ class _WorldState extends State<World> {
                         Container(
                           width: 150,
                           child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            crossAxisAlignment: CrossAxisAlignment.center,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: <Widget>[
                               Text(
@@ -310,6 +318,8 @@ class _WorldState extends State<World> {
               },
               itemCount: countryData == null ? 0 : countryData.length,
             ),
+            onRefresh: refreshCountryStats,
+          ),
     );
   }
 }
