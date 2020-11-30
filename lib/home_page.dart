@@ -3,9 +3,10 @@ import 'package:flutter/rendering.dart';
 import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
-import 'total_cases.dart';
-import 'worldwise_cases.dart';
+import 'worldwide_total.dart';
+import 'countrywise_stats.dart';
 import 'most_effected_countries.dart';
+import 'package:google_fonts/google_fonts.dart';
 
 double edgeCurve = 10;
 
@@ -42,7 +43,7 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
-  Future <Tcases> getJsonData() async
+  Future <WorldwideTotal> getJsonData() async
   {
     var response = await http.get(
       Uri.encodeFull(url), 
@@ -52,7 +53,7 @@ class _HomePageState extends State<HomePage> {
     {
       final convertDataJson = jsonDecode(response.body);
     
-    return Tcases.fromJson(convertDataJson);
+    return WorldwideTotal.fromJson(convertDataJson);
     }
     else{
       throw Exception('Try to  Reload Page');
@@ -64,10 +65,10 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       appBar: AppBar(
         centerTitle: true,
-        title: Text('#StayHome', style: TextStyle(color:Colors.white,fontSize :30, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.teal[400],
+        title: Text('#StayAtHome', style: GoogleFonts.cabin(color:Colors.white,fontSize :30, fontWeight: FontWeight.bold)),
+        backgroundColor: Colors.teal[600],
       ),
-      backgroundColor: Colors.green[50],
+      backgroundColor: Colors.white,
       body: SingleChildScrollView(
         child:  Container(
        child : Center(
@@ -76,26 +77,16 @@ class _HomePageState extends State<HomePage> {
         crossAxisAlignment: CrossAxisAlignment.start,
 
         children: <Widget>[
-            
-        // Padding(padding: EdgeInsets.only(top : 10)),
-
-        // Row(
-        //    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        //    children:<Widget>[
-        //     Text('Worldwide Statistics',style: TextStyle(color:Colors.white,fontSize :22, fontWeight: FontWeight.bold)),
-        //     Padding(padding: EdgeInsets.only(top:10)),
-        //   ]
-        // ),
         Container(
           margin: EdgeInsets.all(5),
           child: Row(mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              Text('Worldwide Statistics',style: TextStyle(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
+              Text('Worldwide Statistics',style: GoogleFonts.cabin(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
             ],
           )
         ),
 
-        FutureBuilder<Tcases>(
+        FutureBuilder<WorldwideTotal>(
 
         future: getJsonData(),
         builder: (BuildContext context,SnapShot){
@@ -104,7 +95,7 @@ class _HomePageState extends State<HomePage> {
             final covid = SnapShot.data;
             return Center(
               child: Container(
-                padding: const EdgeInsets.all(8),
+                padding: const EdgeInsets.all(5),
                 child: Column(
                 children : <Widget>[
                     Container(
@@ -115,14 +106,14 @@ class _HomePageState extends State<HomePage> {
                             flex: 5,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.blue,
-                                border: Border.all(color: Colors.blue, width: 3),
+                                color: Colors.blue[200],
+                                border: Border.all(color: Colors.blue[900], width: 1),
                                 borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text("Total Cases ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text("Total Cases ",style: GoogleFonts.cabin(color: Colors.blue[900], fontSize: 20, fontWeight: FontWeight.bold),),
                                 ],
                               )
                             ),
@@ -131,14 +122,14 @@ class _HomePageState extends State<HomePage> {
                             flex: 5,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.blue[300],
-                                border: Border.all(color: Colors.blue[300], width: 3),
+                                color: Colors.blue[100],
+                                border: Border.all(color: Colors.blue[900], width: 1),
                                 borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text("${covid.cases} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text("${covid.cases} ",style: GoogleFonts.cabin(color: Colors.blue[900], fontSize: 20, fontWeight: FontWeight.bold),),
                                 ],
                               )
                             ),
@@ -154,13 +145,13 @@ class _HomePageState extends State<HomePage> {
                             flex: 5,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.red[900],
-                                border: Border.all(color: Colors.red[900], width: 3)
+                                color: Colors.red[200],
+                                border: Border.all(color: Colors.red[900], width: 1)
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text("Deaths",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold),),
                                 ],
                               )
                             ),
@@ -169,13 +160,13 @@ class _HomePageState extends State<HomePage> {
                             flex: 5,
                             child: Container(
                               decoration: BoxDecoration(
-                                color: Colors.red[500],
-                                border: Border.all(color: Colors.red[500], width: 3)
+                                color: Colors.red[100],
+                                border: Border.all(color: Colors.red[900], width: 1)
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text("${covid.deaths} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text("${covid.deaths} ",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold),),
                                 ],
                               )
                             ),
@@ -187,34 +178,34 @@ class _HomePageState extends State<HomePage> {
                       margin: EdgeInsets.symmetric( horizontal: 20),
                       child: Row(mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                          Expanded(
-                            flex: 5,
-                            child: Container(
-                              decoration: BoxDecoration(
-                                color: Colors.green,
-                                border: Border.all(color: Colors.green, width: 3),
-                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(edgeCurve))
-                              ),
-                              padding: const EdgeInsets.all(10),
-                              child: Column(
-                                children: [
-                                  Text("Recovered",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
-                                ],
-                              )
-                            ),
-                          ),
                           Expanded(
                             flex: 5,
                             child: Container(
                               decoration: BoxDecoration(
                                 color: Colors.green[300],
-                                border: Border.all(color:Colors.green[300], width: 3),
+                                border: Border.all(color: Colors.green[900], width: 1),
+                                borderRadius: BorderRadius.only(bottomLeft: Radius.circular(edgeCurve))
+                              ),
+                              padding: const EdgeInsets.all(10),
+                              child: Column(
+                                children: [
+                                  Text("Recovered",style: GoogleFonts.cabin(color: Colors.green[900], fontSize: 20, fontWeight: FontWeight.bold),),
+                                ],
+                              )
+                            ),
+                          ),
+                          Expanded(
+                            flex: 5,
+                            child: Container(
+                              decoration: BoxDecoration(
+                                color: Colors.green[100],
+                                border: Border.all(color:Colors.green[900], width: 1),
                                 borderRadius: BorderRadius.only(bottomRight: Radius.circular(edgeCurve))
                               ),
                               padding: const EdgeInsets.all(10),
                               child: Column(
                                 children: [
-                                  Text("${covid.recovered} ",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),),
+                                  Text("${covid.recovered} ",style: GoogleFonts.cabin(color: Colors.green[900], fontSize: 20, fontWeight: FontWeight.bold),),
                                 ],
                               )
                             ),
@@ -238,27 +229,26 @@ class _HomePageState extends State<HomePage> {
         margin: EdgeInsets.all(5),
         child: Row(mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text('Most Affected Countries',style: TextStyle(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
+            Text('Most Affected Countries',style: GoogleFonts.cabin(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
           ],
         )
       ),
       Container(
-            margin: EdgeInsets.symmetric(horizontal: 30),
-            // padding: const EdgeInsets.symmetric(vertical: 5),
+            margin: EdgeInsets.symmetric(horizontal: 25),
             child : Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children : <Widget>[
                 Expanded(
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.teal[800],
-                      border: Border.all(color: Colors.teal[800], width: 3),
+                      color: Colors.teal[200],
+                      border: Border.all(color: Colors.teal[900], width: 1),
                       borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text("Countries",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold),)
+                        Text("Countries",style: GoogleFonts.cabin(color: Colors.teal[900], fontSize: 20, fontWeight: FontWeight.bold),)
                       ],
                     )
                   ),
@@ -267,14 +257,14 @@ class _HomePageState extends State<HomePage> {
                   flex: 5,
                   child: Container(
                     decoration: BoxDecoration(
-                      color: Colors.red[900],
-                      border: Border.all(color: Colors.red[900], width: 3),
+                      color: Colors.red[200],
+                      border: Border.all(color: Colors.red[900], width: 1),
                       borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
                     ),
                     padding: const EdgeInsets.all(10),
                     child: Column(
                       children: [
-                        Text("Deaths",style: TextStyle(color: Colors.white, fontSize: 20, fontWeight: FontWeight.bold)),
+                        Text("Deaths",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold)),
                       ],
                     )
                   ),
@@ -292,7 +282,7 @@ class _HomePageState extends State<HomePage> {
           child:Row( mainAxisAlignment: MainAxisAlignment.center,
             children: <Widget>[ 
               Card(
-                child :Container(color: Colors.teal[400],
+                child :Container(color: Colors.teal[600],
                   child : Center(
                   child: Column( 
                   mainAxisAlignment: MainAxisAlignment.center,
@@ -300,9 +290,9 @@ class _HomePageState extends State<HomePage> {
                   children : <Widget>[
                     OutlineButton(
                       padding: const EdgeInsets.all(15),
-                      borderSide: BorderSide(color : Colors.teal[400], width: 2),
+                      borderSide: BorderSide(color : Colors.teal[600], width: 2),
                       onPressed: ()=> navigateToWorld(),
-                      child : Text("Countrywise Statistics",style: TextStyle(fontSize: 20,color:Colors.white,fontWeight: FontWeight.bold),),
+                      child : Text("Countrywise Statistics",style: GoogleFonts.cabin(fontSize: 20,color:Colors.white,fontWeight: FontWeight.bold),),
                     ),
                   ]))
                 ) 

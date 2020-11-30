@@ -1,15 +1,15 @@
-class Tcases
+class WorldwideTotal
 {
   var cases;
   var deaths;
   var recovered;
   var updated;
 
-  Tcases({this.cases,this.deaths,this.recovered,this.updated});
+  WorldwideTotal({this.cases,this.deaths,this.recovered,this.updated});
 
-  factory Tcases.fromJson(final json)
+  factory WorldwideTotal.fromJson(final json)
   {
-    return Tcases(
+    return WorldwideTotal(
         
       cases: json["cases"],
       deaths : json["deaths"],

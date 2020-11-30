@@ -38,6 +38,18 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "convert",
+      "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/convert-2.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "1.17"
+    },
+    {
+      "name": "crypto",
+      "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/crypto-2.1.5",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "dio",
       "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/dio-3.0.10",
       "packageUri": "lib/",
@@ -86,6 +98,12 @@
       "languageVersion": "2.0"
     },
     {
+      "name": "google_fonts",
+      "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/google_fonts-1.1.1",
+      "packageUri": "lib/",
+      "languageVersion": "2.3"
+    },
+    {
       "name": "http",
       "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/http-0.12.2",
       "packageUri": "lib/",
@@ -122,8 +140,20 @@
       "languageVersion": "2.10"
     },
     {
+      "name": "path_provider",
+      "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider-1.6.24",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
       "name": "path_provider_linux",
       "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_linux-0.0.1+2",
+      "packageUri": "lib/",
+      "languageVersion": "2.1"
+    },
+    {
+      "name": "path_provider_macos",
+      "rootUri": "file:///home/uipkdzn/snap/flutter/common/flutter/.pub-cache/hosted/pub.dartlang.org/path_provider_macos-0.0.4+6",
       "packageUri": "lib/",
       "languageVersion": "2.1"
     },
@@ -308,7 +338,7 @@
       "languageVersion": "2.7"
     }
   ],
-  "generated": "2020-11-22T13:03:28.108625Z",
+  "generated": "2020-11-30T13:42:34.665564Z",
   "generator": "pub",
   "generatorVersion": "2.10.4"
 }
