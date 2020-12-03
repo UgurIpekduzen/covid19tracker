@@ -49,9 +49,10 @@ class Search extends SearchDelegate{
             child: Row(
               children: <Widget>[
                 Container(
+                  margin: const EdgeInsets.all(5),
                   width: 150,
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.center,
+                    crossAxisAlignment:  CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: <Widget>[
                       Text(

@@ -4,7 +4,7 @@ import 'dart:async';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'worldwide_total.dart';
-import 'countrywise_stats.dart';
+import 'countrywide_stats.dart';
 import 'most_effected_countries.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -298,7 +298,7 @@ class _HomePageState extends State<HomePage> {
                         padding: const EdgeInsets.all(15),
                         borderSide: BorderSide(color : Colors.teal[600], width: 2),
                         onPressed: ()=> navigateToWorld(),
-                        child : Text("Countrywise Statistics",style: GoogleFonts.cabin(fontSize: 20,color:Colors.white,fontWeight: FontWeight.bold),),
+                        child : Text("Countrywide Statistics",style: GoogleFonts.cabin(fontSize: 20,color:Colors.white,fontWeight: FontWeight.bold),),
                       ),
                     ]))
                   ) 
