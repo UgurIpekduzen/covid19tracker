@@ -72,7 +72,7 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         centerTitle: true,
         title: Text('#StayAtHome', style: GoogleFonts.cabin(color:Colors.white,fontSize :30, fontWeight: FontWeight.bold)),
-        backgroundColor: Colors.teal[600],
+        backgroundColor: Colors.teal,
       ),
       backgroundColor: Colors.white,
       body: RefreshIndicator(
@@ -288,7 +288,16 @@ class _HomePageState extends State<HomePage> {
             child:Row( mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[ 
                 Card(
-                  child :Container(color: Colors.teal[600],
+                  child :Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(5)),
+                      color: Colors.teal,
+                      // gradient: LinearGradient(
+                      //   colors: [Colors.teal[800], Colors.teal],
+                      //   begin: Alignment.bottomCenter,
+                      //   end: Alignment.topRight,
+                      // )
+                    ),
                     child : Center(
                     child: Column( 
                     mainAxisAlignment: MainAxisAlignment.center,
@@ -296,7 +305,6 @@ class _HomePageState extends State<HomePage> {
                     children : <Widget>[
                       OutlineButton(
                         padding: const EdgeInsets.all(15),
-                        borderSide: BorderSide(color : Colors.teal[600], width: 2),
                         onPressed: ()=> navigateToWorld(),
                         child : Text("Countrywide Statistics",style: GoogleFonts.cabin(fontSize: 20,color:Colors.white,fontWeight: FontWeight.bold),),
                       ),

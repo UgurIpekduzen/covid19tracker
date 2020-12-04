@@ -43,7 +43,7 @@ class _WorldState extends State<World> {
           },)
         ],
         title: Text('Countrywide Statistics', style: GoogleFonts.cabin(fontSize: 25)),
-        backgroundColor: Colors.teal[600]
+        backgroundColor: Colors.teal
       ),
       backgroundColor: Colors.white,
       body: countryData == null
@@ -55,10 +55,17 @@ class _WorldState extends State<World> {
             child: ListView.builder(
               itemBuilder: (context, index) {
                 return Card(
-                  color: Colors.white70,
-                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  elevation: 0,
+                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
-                    // height: 310,
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(20)),
+                      gradient: LinearGradient(
+                          colors: [Colors.grey[100], Colors.white],
+                          begin: Alignment.bottomCenter,
+                          end: Alignment.topRight,
+                        )
+                    ),
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -85,7 +92,7 @@ class _WorldState extends State<World> {
                                 child: Row(children: [
                                     Text(
                                       countryData[index]['country'],
-                                      style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.teal[900], fontSize: 16),
+                                      style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black/*Colors.teal[900]*/, fontSize: 16),
                                     ),
                                   ]
                                 )
@@ -106,7 +113,7 @@ class _WorldState extends State<World> {
                                     Container(
                                       child: Row(
                                         children: [
-                                          Text('Daily', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25))
+                                          Text('Daily', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20))
                                         ],
                                       ),
                                     ),
@@ -114,46 +121,70 @@ class _WorldState extends State<World> {
                                       child: Row(
                                         children: [
                                           //Daily Cases
-                                          Container(
-                                            padding: const EdgeInsets.all(0),
-                                            margin: const EdgeInsets.symmetric(horizontal: 15),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                              Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.lightBlue,
-                                                  border: Border.all(color: Colors.lightBlue, width: 5),
-                                                  borderRadius: BorderRadius.all(Radius.circular(10))
-                                                ),
-                                                child: Row(children: [
-                                                   Text('${countryData[index]['todayCases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                  ],
-                                                ),
-                                              )
-                                            ],),
+                                          Expanded(
+                                            flex: 5,
+                                            child: Container(
+                                              padding: const EdgeInsets.all(0),
+                                              margin: const EdgeInsets.symmetric(horizontal: 15),
+                                              child: Column(
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.lightBlue,
+                                                      border: Border.all(color: Colors.lightBlue),
+                                                      borderRadius: BorderRadius.all(Radius.circular(100))
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Text('${countryData[index]['todayCases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                      ],
+                                                    ),
+                                                  )
+                                              ],),
+                                            ),
                                           ),
                                           //Daily Deaths
-                                          Container(
-                                            padding: const EdgeInsets.all(0),
-                                            margin: const EdgeInsets.symmetric(horizontal: 15),
-                                            child: Column(
-                                              crossAxisAlignment: CrossAxisAlignment.start,
-                                              children: [
-                                              Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                              Container(
-                                                decoration: BoxDecoration(
-                                                  color: Colors.deepOrange,
-                                                  border: Border.all(color: Colors.deepOrange, width: 5),
-                                                  borderRadius: BorderRadius.all(Radius.circular(10))
-                                                ),
-                                                child: Row(children: [
-                                                    Text('${countryData[index]['todayDeaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                  ],
-                                                ),
-                                              )
-                                            ],),
+                                          Expanded(
+                                            flex: 5,
+                                            child: Container(
+                                              padding: const EdgeInsets.all(0),
+                                              margin: const EdgeInsets.symmetric(horizontal: 15),
+                                              child: Column(
+                                                children: [
+                                                  Container(
+                                                    child: Row(
+                                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                                      children: [
+                                                        Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                      ],
+                                                    ),
+                                                  ),
+                                                  Container(
+                                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                    decoration: BoxDecoration(
+                                                      color: Colors.deepOrange,
+                                                      border: Border.all(color: Colors.deepOrange),
+                                                      borderRadius: BorderRadius.all(Radius.circular(100))
+                                                    ),
+                                                    child: Column(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Text('${countryData[index]['todayDeaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                      ],
+                                                    ),
+                                                  )
+                                              ],),
+                                            ),
                                           ),
                                         ],
                                       )
@@ -169,105 +200,153 @@ class _WorldState extends State<World> {
                                     Container(
                                       child: Row(
                                         children: [
-                                          Text('Total', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 25))
+                                          Text('Total', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20))
                                         ],
                                       ),
                                     ),
                                     Container(
-                                      child: Row(
+                                      child: Column(
                                         children: [
                                           Container(
-                                            child: Column(
+                                            child: Row(
                                               children: [
                                                 //Total Cases
-                                                Container(
-                                                  padding: const EdgeInsets.all(0),
-                                                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                    Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.blue,
-                                                        border: Border.all(color: Colors.blue, width: 5),
-                                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                                      ),
-                                                      child: Row(children: [
-                                                          Text('${countryData[index]['cases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                        ],
-                                                      ),
-                                                    ),
-                                                  ],),
+                                                Expanded(
+                                                  flex: 5,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(0),
+                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.blue,
+                                                            border: Border.all(color: Colors.blue),
+                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              Text('${countryData[index]['cases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                            ],
+                                                          ),
+                                                        ),
+                                                    ],),
+                                                  ),
                                                 ),
-                                                //Active
-                                                Container(
-                                                  padding: const EdgeInsets.all(0),
-                                                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                    Text('Active:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.orange,
-                                                        border: Border.all(color: Colors.orange, width: 5),
-                                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                                      ),
-                                                      child: Row(children: [
-                                                          Text('${countryData[index]['active'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],),
+                                                //Total Deaths
+                                                Expanded(
+                                                  flex: 5,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(0),
+                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.red,
+                                                            border: Border.all(color: Colors.red),
+                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              Text('${countryData[index]['deaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                            ],
+                                                          ),
+                                                        )
+                                                    ],),
+                                                  ),
                                                 ),
                                               ],
                                             )
                                           ),
                                           Container(
-                                            child: Column(
+                                            child: Row(
                                               children: [
-                                                //Total Deaths
-                                                Container(
-                                                  padding: const EdgeInsets.all(0),
-                                                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                    Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.red,
-                                                        border: Border.all(color: Colors.red, width: 5),
-                                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                                      ),
-                                                      child: Row(children: [
-                                                          Text('${countryData[index]['deaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],),
+                                                //Active
+                                                Expanded(
+                                                  flex: 5,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(0),
+                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text('Active:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.orange,
+                                                            border: Border.all(color: Colors.orange),
+                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              Text('${countryData[index]['active'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                            ],
+                                                          ),
+                                                        )
+                                                    ],),
+                                                  ),
                                                 ),
                                                 //Recovered
-                                                Container(
-                                                  padding: const EdgeInsets.all(0),
-                                                  margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                  child: Column(
-                                                    crossAxisAlignment: CrossAxisAlignment.start,
-                                                    children: [
-                                                    Text('Recovered:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16)),
-                                                    Container(
-                                                      decoration: BoxDecoration(
-                                                        color: Colors.green,
-                                                        border: Border.all(color: Colors.green, width: 5),
-                                                        borderRadius: BorderRadius.all(Radius.circular(10))
-                                                      ),
-                                                      child: Row(children: [
-                                                          Text('${countryData[index]['recovered'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                        ],
-                                                      ),
-                                                    )
-                                                  ],),
+                                                Expanded(
+                                                  flex: 5,
+                                                  child: Container(
+                                                    padding: const EdgeInsets.all(0),
+                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
+                                                    child: Column(
+                                                      children: [
+                                                        Container(
+                                                          child: Row(
+                                                            crossAxisAlignment: CrossAxisAlignment.start,
+                                                            children: [
+                                                              Text('Recovered:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
+                                                            ],
+                                                          ),
+                                                        ),
+                                                        Container(
+                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          decoration: BoxDecoration(
+                                                            color: Colors.green,
+                                                            border: Border.all(color: Colors.green),
+                                                            borderRadius: BorderRadius.all(Radius.circular(100))
+                                                          ),
+                                                          child: Column(
+                                                            mainAxisAlignment: MainAxisAlignment.center,
+                                                            children: [
+                                                              Text('${countryData[index]['recovered'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
+                                                            ],
+                                                          ),
+                                                        )
+                                                    ],),
+                                                  ),
                                                 ),
                                               ],
                                             )
