@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 import 'search.dart';
 
 class World extends StatefulWidget {
@@ -65,7 +66,7 @@ class _WorldState extends State<World> {
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
-                      children: <Widget>[
+                      children: [
                         // Country Info
                         Container(  
                           margin: const EdgeInsets.symmetric(horizontal: 1.5),
@@ -98,266 +99,201 @@ class _WorldState extends State<World> {
                         ),
                         // Country Statistics
                         Container(
+                          padding: EdgeInsets.symmetric(vertical: 10),
                           margin: const EdgeInsets.symmetric(horizontal: 1.5),
                           child:Column(
-                            children: <Widget>[
-                              //Today / Daily Statistics
+                            children: [
                               Container(
-                                margin: const EdgeInsets.all(1.5),
-                                child: Column(
+                                child: Row(
                                   children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Text('Daily', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20))
-                                        ],
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightBlue,
+                                          border: Border.all(color: Colors.lightBlue, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("DAILY CASES",style: GoogleFonts.cabin(color: Colors.lightBlue[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("${NumberFormat.compact().format(countryData[index]['todayCases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
                                       ),
                                     ),
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          //Daily Cases
-                                          Expanded(
-                                            flex: 5,
-                                            child: Container(
-                                              padding: const EdgeInsets.all(0),
-                                              margin: const EdgeInsets.symmetric(horizontal: 15),
-                                              child: Column(
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.deepOrange,
+                                          border: Border.all(color: Colors.deepOrange, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
                                                 children: [
-                                                  Container(
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.lightBlue,
-                                                      border: Border.all(color: Colors.lightBlue),
-                                                      borderRadius: BorderRadius.all(Radius.circular(100))
-                                                    ),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        Text('${countryData[index]['todayCases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                      ],
-                                                    ),
-                                                  )
-                                              ],),
+                                                  Text("DAILY DEATHS",style: GoogleFonts.cabin(color: Colors.deepOrange[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                          //Daily Deaths
-                                          Expanded(
-                                            flex: 5,
-                                            child: Container(
-                                              padding: const EdgeInsets.all(0),
-                                              margin: const EdgeInsets.symmetric(horizontal: 15),
-                                              child: Column(
+                                            Container(
+                                              child: Row(
                                                 children: [
-                                                  Container(
-                                                    child: Row(
-                                                      crossAxisAlignment: CrossAxisAlignment.start,
-                                                      children: [
-                                                        Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                      ],
-                                                    ),
-                                                  ),
-                                                  Container(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                    decoration: BoxDecoration(
-                                                      color: Colors.deepOrange,
-                                                      border: Border.all(color: Colors.deepOrange),
-                                                      borderRadius: BorderRadius.all(Radius.circular(100))
-                                                    ),
-                                                    child: Column(
-                                                      mainAxisAlignment: MainAxisAlignment.center,
-                                                      children: [
-                                                        Text('${countryData[index]['todayDeaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                      ],
-                                                    ),
-                                                  )
-                                              ],),
+                                                  Text("${NumberFormat.compact().format(countryData[index]['todayDeaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ),
+                                    ),
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.orange,
+                                          border: Border.all(color: Colors.orange, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("ACTIVE",style: GoogleFonts.cabin(color: Colors.orange[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
                                             ),
-                                          ),
-                                        ],
-                                      )
-                                    )
-                                  ]
-                                )
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("${NumberFormat.compact().format(countryData[index]['active'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                              //Total Statistics
                               Container(
-                                margin: const EdgeInsets.all(1.5),
-                                child: Column(
+                                child: Row(
                                   children: [
-                                    Container(
-                                      child: Row(
-                                        children: [
-                                          Text('Total', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 20))
-                                        ],
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.blue,
+                                          border: Border.all(color: Colors.blue, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("TOTAL CASES",style: GoogleFonts.cabin(color: Colors.blue[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("${NumberFormat.compact().format(countryData[index]['cases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
                                       ),
                                     ),
-                                    Container(
-                                      child: Column(
-                                        children: [
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                //Total Cases
-                                                Expanded(
-                                                  flex: 5,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.all(0),
-                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                    child: Column(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                            children: [
-                                                              Text('Cases:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                          decoration: BoxDecoration(
-                                                            color: Colors.blue,
-                                                            border: Border.all(color: Colors.blue),
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
-                                                          ),
-                                                          child: Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Text('${countryData[index]['cases'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                            ],
-                                                          ),
-                                                        ),
-                                                    ],),
-                                                  ),
-                                                ),
-                                                //Total Deaths
-                                                Expanded(
-                                                  flex: 5,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.all(0),
-                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                    child: Column(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                            children: [
-                                                              Text('Deaths:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                          decoration: BoxDecoration(
-                                                            color: Colors.red,
-                                                            border: Border.all(color: Colors.red),
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
-                                                          ),
-                                                          child: Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Text('${countryData[index]['deaths'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                            ],
-                                                          ),
-                                                        )
-                                                    ],),
-                                                  ),
-                                                ),
-                                              ],
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.red,
+                                          border: Border.all(color: Colors.red, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("DEATHS",style: GoogleFonts.cabin(color: Colors.red[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("${NumberFormat.compact().format(countryData[index]['deaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
                                             )
-                                          ),
-                                          Container(
-                                            child: Row(
-                                              children: [
-                                                //Active
-                                                Expanded(
-                                                  flex: 5,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.all(0),
-                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                    child: Column(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                            children: [
-                                                              Text('Active:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                          decoration: BoxDecoration(
-                                                            color: Colors.orange,
-                                                            border: Border.all(color: Colors.orange),
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
-                                                          ),
-                                                          child: Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Text('${countryData[index]['active'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                            ],
-                                                          ),
-                                                        )
-                                                    ],),
-                                                  ),
-                                                ),
-                                                //Recovered
-                                                Expanded(
-                                                  flex: 5,
-                                                  child: Container(
-                                                    padding: const EdgeInsets.all(0),
-                                                    margin: const EdgeInsets.symmetric(horizontal: 15),
-                                                    child: Column(
-                                                      children: [
-                                                        Container(
-                                                          child: Row(
-                                                            crossAxisAlignment: CrossAxisAlignment.start,
-                                                            children: [
-                                                              Text('Recovered:', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black54, fontSize: 16)),
-                                                            ],
-                                                          ),
-                                                        ),
-                                                        Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-                                                          decoration: BoxDecoration(
-                                                            color: Colors.green,
-                                                            border: Border.all(color: Colors.green),
-                                                            borderRadius: BorderRadius.all(Radius.circular(100))
-                                                          ),
-                                                          child: Column(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Text('${countryData[index]['recovered'].toString()}', style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.white, fontSize: 30))
-                                                            ],
-                                                          ),
-                                                        )
-                                                    ],),
-                                                  ),
-                                                ),
-                                              ],
-                                            )
-                                          )
-                                        ],
+                                          ],
+                                        )
                                       ),
                                     ),
-                                  ]
-                                )
+                                    Expanded(
+                                      child: Container(
+                                        margin: EdgeInsets.all(2),
+                                        padding: EdgeInsets.all(5),
+                                        decoration: BoxDecoration(
+                                          color: Colors.green,
+                                          border: Border.all(color: Colors.green, width: 1),
+                                          borderRadius: BorderRadius.all(Radius.circular(10))
+                                        ),
+                                        child: Column(
+                                          children: [
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("RECOVERED",style: GoogleFonts.cabin(color: Colors.green[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            ),
+                                            Container(
+                                              child: Row(
+                                                children: [
+                                                  Text("${NumberFormat.compact().format(countryData[index]['recovered'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                                ],
+                                              ),
+                                            )
+                                          ],
+                                        )
+                                      ),
+                                    ),
+                                  ],
+                                ),
                               ),
-                            ],
-                          ),
-                        ),
+                            ]
+                          )
+                        )
                       ]
-                    ),
+                    )
                   )
                 );
               },

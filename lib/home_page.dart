@@ -7,6 +7,7 @@ import 'worldwide_total.dart';
 import 'countrywide_stats.dart';
 import 'most_effected_countries.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 double edgeCurve = 10;
 
@@ -74,23 +75,14 @@ class _HomePageState extends State<HomePage> {
         title: Text('#StayAtHome', style: GoogleFonts.cabin(color:Colors.white,fontSize :30, fontWeight: FontWeight.bold)),
         backgroundColor: Colors.teal,
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
       body: RefreshIndicator(
         child:  Container(
         child : Center(
         child :Column(
           mainAxisAlignment: MainAxisAlignment.start,
           crossAxisAlignment: CrossAxisAlignment.start,
-
           children: <Widget>[
-          Container(
-            margin: EdgeInsets.all(5),
-            child: Row(mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text('Worldwide Statistics',style: GoogleFonts.cabin(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
-              ],
-            )
-          ),
 
           FutureBuilder<WorldwideTotal>(
 
@@ -99,129 +91,125 @@ class _HomePageState extends State<HomePage> {
             if(SnapShot.hasData)
             {
               final covid = SnapShot.data;
-              return Center(
+              return Card(
+                elevation: 0,
+                margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                 child: Container(
-                  padding: const EdgeInsets.all(5),
-                  child: Column(
-                  children : <Widget>[
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Colors.white
+                    ),
+                  padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  child: Column(children: [
                       Container(
-                        margin: EdgeInsets.symmetric( horizontal: 20),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue[200],
-                                  border: Border.all(color: Colors.blue[900], width: 1),
-                                  borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("Total Cases ",style: GoogleFonts.cabin(color: Colors.blue[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
-                              ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.blue[100],
-                                  border: Border.all(color: Colors.blue[900], width: 1),
-                                  borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("${covid.cases} ",style: GoogleFonts.cabin(color: Colors.blue[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
-                              ),
-                            ),
-                          ],
-                        ),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.all(Radius.circular(30)),
+                        color: Colors.white
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric( horizontal: 20),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.red[200],
-                                  border: Border.all(color: Colors.red[900], width: 1)
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("Deaths",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
-                              ),
-                            ),
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.red[100],
-                                  border: Border.all(color: Colors.red[900], width: 1)
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("${covid.deaths} ",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
-                              ),
-                            ),
-                          ],
-                        ),
+                      padding: EdgeInsets.symmetric(horizontal: 10),
+                      child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text('Worldwide Statistics',style: GoogleFonts.cabin(color:Colors.black, fontSize :25, fontWeight: FontWeight.bold))
+                        ],
                       ),
-                      Container(
-                        margin: EdgeInsets.symmetric( horizontal: 20),
-                        child: Row(mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.green[300],
-                                  border: Border.all(color: Colors.green[900], width: 1),
-                                  borderRadius: BorderRadius.only(bottomLeft: Radius.circular(edgeCurve))
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("Recovered",style: GoogleFonts.cabin(color: Colors.green[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
+                    ),
+                    Container(
+                      padding: EdgeInsets.symmetric(vertical: 10),
+                      child: Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 2),
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.blue,
+                                border: Border.all(color: Colors.blue, width: 1),
+                                borderRadius: BorderRadius.all(Radius.circular(edgeCurve))
                               ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("TOTAL CASES",style: GoogleFonts.cabin(color: Colors.blue[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("${NumberFormat.compact().format(covid.cases)} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
                             ),
-                            Expanded(
-                              flex: 5,
-                              child: Container(
-                                decoration: BoxDecoration(
-                                  color: Colors.green[100],
-                                  border: Border.all(color:Colors.green[900], width: 1),
-                                  borderRadius: BorderRadius.only(bottomRight: Radius.circular(edgeCurve))
-                                ),
-                                padding: const EdgeInsets.all(10),
-                                child: Column(
-                                  children: [
-                                    Text("${covid.recovered} ",style: GoogleFonts.cabin(color: Colors.green[900], fontSize: 20, fontWeight: FontWeight.bold),),
-                                  ],
-                                )
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 2),
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.red,
+                                border: Border.all(color: Colors.red, width: 1),
+                                borderRadius: BorderRadius.all(Radius.circular(edgeCurve))
                               ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("DEATHS",style: GoogleFonts.cabin(color: Colors.red[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("${NumberFormat.compact().format(covid.deaths)} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
                             ),
-                          ],
-                        ),
-                      )
-                    ]
-                  )
-                ) 
+                          ),
+                          Expanded(
+                            child: Container(
+                              margin: EdgeInsets.symmetric(horizontal: 2),
+                              padding: EdgeInsets.all(5),
+                              decoration: BoxDecoration(
+                                color: Colors.green,
+                                border: Border.all(color: Colors.green, width: 1),
+                                borderRadius: BorderRadius.all(Radius.circular(edgeCurve))
+                              ),
+                              child: Column(
+                                children: [
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("RECOVERED",style: GoogleFonts.cabin(color: Colors.green[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  ),
+                                  Container(
+                                    child: Row(
+                                      children: [
+                                        Text("${NumberFormat.compact().format(covid.recovered)} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                      ],
+                                    ),
+                                  )
+                                ],
+                              )
+                            ),
+                          ),
+                        ],
+                      ),
+                    )
+
+                  ],), 
+                )
               );
             }
             else if(SnapShot.hasError){
