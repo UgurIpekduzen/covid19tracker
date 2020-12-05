@@ -45,7 +45,7 @@ class _WorldState extends State<World> {
         title: Text('Countrywide Statistics', style: GoogleFonts.cabin(fontSize: 25)),
         backgroundColor: Colors.teal
       ),
-      backgroundColor: Colors.white,
+      backgroundColor: Colors.grey[200],
       body: countryData == null
           ?
             Center(
@@ -56,15 +56,11 @@ class _WorldState extends State<World> {
               itemBuilder: (context, index) {
                 return Card(
                   elevation: 0,
-                 margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                  margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                   child: Container(
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(20)),
-                      gradient: LinearGradient(
-                          colors: [Colors.grey[100], Colors.white],
-                          begin: Alignment.bottomCenter,
-                          end: Alignment.topRight,
-                        )
+                      borderRadius: BorderRadius.all(Radius.circular(30)),
+                      color: Colors.white
                     ),
                     padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                     child: Column(
@@ -137,7 +133,7 @@ class _WorldState extends State<World> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                     decoration: BoxDecoration(
                                                       color: Colors.lightBlue,
                                                       border: Border.all(color: Colors.lightBlue),
@@ -170,7 +166,7 @@ class _WorldState extends State<World> {
                                                     ),
                                                   ),
                                                   Container(
-                                                    padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                    padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                     decoration: BoxDecoration(
                                                       color: Colors.deepOrange,
                                                       border: Border.all(color: Colors.deepOrange),
@@ -227,7 +223,7 @@ class _WorldState extends State<World> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                           decoration: BoxDecoration(
                                                             color: Colors.blue,
                                                             border: Border.all(color: Colors.blue),
@@ -260,7 +256,7 @@ class _WorldState extends State<World> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                           decoration: BoxDecoration(
                                                             color: Colors.red,
                                                             border: Border.all(color: Colors.red),
@@ -299,7 +295,7 @@ class _WorldState extends State<World> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                           decoration: BoxDecoration(
                                                             color: Colors.orange,
                                                             border: Border.all(color: Colors.orange),
@@ -332,7 +328,7 @@ class _WorldState extends State<World> {
                                                           ),
                                                         ),
                                                         Container(
-                                                          padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 5),
+                                                          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
                                                           decoration: BoxDecoration(
                                                             color: Colors.green,
                                                             border: Border.all(color: Colors.green),
