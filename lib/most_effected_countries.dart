@@ -1,6 +1,7 @@
 import 'dart:developer';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:intl/intl.dart';
 
 double edgeCurve = 15;
 
@@ -18,19 +19,15 @@ class MostAffectedPanel extends StatelessWidget {
         itemBuilder: (context, index) {
           if(index == 4) {
             return Container(
-              margin: EdgeInsets.symmetric( horizontal: 25),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              padding: const EdgeInsets.symmetric(vertical:10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 5,
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.teal[100],
-                        border: Border.all(color: Colors.teal[900], width: 1),
-                        borderRadius: BorderRadius.only(bottomLeft: Radius.circular(edgeCurve))
-                      ),
-                      padding: const EdgeInsets.all(13),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network(
                             countryData[index]['countryInfo']['flag'],
@@ -41,19 +38,28 @@ class MostAffectedPanel extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 5,
                     child: Container(
-                      decoration: BoxDecoration(
-                       color: Colors.red[100],
-                        border: Border.all(color: Colors.red[900], width: 1),
-                        borderRadius: BorderRadius.only(bottomRight: Radius.circular(edgeCurve))
-                      ),
-                      padding: const EdgeInsets.all(16),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            countryData[index]['deaths'].toString(),
-                            style: GoogleFonts.cabin(color: Colors.red[900], fontWeight: FontWeight.bold, fontSize: 20),
+                            countryData[index]['country'].toString(),
+                            style: GoogleFonts.cabin(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+                          )
+                        ],
+                      )
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            NumberFormat.compact().format(countryData[index]['deaths']).toString(),
+                            style: GoogleFonts.cabin(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
                           )
                         ],
                       )
@@ -65,18 +71,20 @@ class MostAffectedPanel extends StatelessWidget {
           }
           else {
             return Container(
-              margin: EdgeInsets.symmetric( horizontal: 25),
-              child: Row(mainAxisAlignment: MainAxisAlignment.center,
+              decoration: BoxDecoration(
+                border: Border(
+                  bottom: BorderSide(color: Colors.black54, width: 1),
+                )
+              ),
+              padding: const EdgeInsets.symmetric(vertical:10),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Expanded(
-                    flex: 5,
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.teal[100],
-                        border: Border.all(color: Colors.teal[900], width: 1),
-                      ),
-                      padding: const EdgeInsets.all(13),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Image.network(
                             countryData[index]['countryInfo']['flag'],
@@ -87,18 +95,28 @@ class MostAffectedPanel extends StatelessWidget {
                     ),
                   ),
                   Expanded(
-                    flex: 5,
                     child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red[100],
-                        border: Border.all(color: Colors.red[900], width: 1),
-                      ),
-                      padding: const EdgeInsets.all(16),
                       child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            countryData[index]['deaths'].toString(),
-                            style: GoogleFonts.cabin(color: Colors.red[900], fontWeight: FontWeight.bold, fontSize: 20),
+                            countryData[index]['country'].toString(),
+                            style: GoogleFonts.cabin(color: Colors.black, fontWeight: FontWeight.bold, fontSize: 15),
+                          )
+                        ],
+                      )
+                    ),
+                  ),
+                  Expanded(
+                    child: Container(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            NumberFormat.compact().format(countryData[index]['deaths']).toString(),
+                            style: GoogleFonts.cabin(color: Colors.red, fontWeight: FontWeight.bold, fontSize: 15),
                           )
                         ],
                       )

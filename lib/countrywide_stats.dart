@@ -89,7 +89,7 @@ class _WorldState extends State<World> {
                                 child: Row(children: [
                                     Text(
                                       countryData[index]['country'],
-                                      style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black/*Colors.teal[900]*/, fontSize: 16),
+                                      style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                                     ),
                                   ]
                                 )

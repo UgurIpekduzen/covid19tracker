@@ -219,60 +219,106 @@ class _HomePageState extends State<HomePage> {
             return CircularProgressIndicator();
           }
         ),
-        Container(
-          margin: EdgeInsets.all(5),
-          child: Row(mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              Text('Most Affected Countries',style: GoogleFonts.cabin(color:Colors.black54,fontSize :25, fontWeight: FontWeight.bold))
-            ],
-          )
-        ),
-        Container(
-              margin: EdgeInsets.symmetric(horizontal: 25),
-              child : Row( mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children : <Widget>[
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.teal[200],
-                        border: Border.all(color: Colors.teal[900], width: 1),
-                        borderRadius: BorderRadius.only(topLeft: Radius.circular(edgeCurve))
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Text("Countries",style: GoogleFonts.cabin(color: Colors.teal[900], fontSize: 20, fontWeight: FontWeight.bold),)
-                        ],
-                      )
-                    ),
-                  ),
-                  Expanded(
-                    flex: 5,
-                    child: Container(
-                      decoration: BoxDecoration(
-                        color: Colors.red[200],
-                        border: Border.all(color: Colors.red[900], width: 1),
-                        borderRadius: BorderRadius.only(topRight: Radius.circular(edgeCurve))
-                      ),
-                      padding: const EdgeInsets.all(10),
-                      child: Column(
-                        children: [
-                          Text("Deaths",style: GoogleFonts.cabin(color: Colors.red[900], fontSize: 20, fontWeight: FontWeight.bold)),
-                        ],
-                      )
-                    ),
-                  ),
-              ]
-            ) 
-        ),
-        countryData == null
-            ? Container()
-            : MostAffectedPanel(
-                countryData: countryData,
+        Card(
+          elevation: 0,
+          margin: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+          child: Container(
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(30)),
+                color: Colors.white
               ),
-        Container(
-          padding: const EdgeInsets.all(10),
+            padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+            child: Column(
+              children: [
+                Container(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.all(Radius.circular(30)),
+                    color: Colors.white
+                  ),
+                  padding: EdgeInsets.symmetric(horizontal: 10),
+                  child: Row(mainAxisAlignment: MainAxisAlignment.start,
+                    children: [
+                      Text('Most Affected Countries',style: GoogleFonts.cabin(color:Colors.black,fontSize :25, fontWeight: FontWeight.bold))
+                    ],
+                  ),
+                ),
+                Container(
+                  decoration: BoxDecoration(
+                    border: Border(
+                      bottom: BorderSide(color: Colors.black54, width: 1),
+                    )
+                  ),
+                  padding: const EdgeInsets.symmetric(vertical:10),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "FLAG",
+                                style: GoogleFonts.cabin(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15),
+                              )
+                            ],
+                          )
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "COUNTRY",
+                                style: GoogleFonts.cabin(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15),
+                              )
+                            ],
+                          )
+                        ),
+                      ),
+                      Expanded(
+                        child: Container(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            crossAxisAlignment: CrossAxisAlignment.center,
+                            children: [
+                              Text(
+                                "DEATHS",
+                                style: GoogleFonts.cabin(color: Colors.black54, fontWeight: FontWeight.bold, fontSize: 15),
+                              )
+                            ],
+                          )
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                countryData == null
+                ? Container()
+                : MostAffectedPanel(
+                    countryData: countryData,
+                ),
+              ]
+            )
+          )
+          // child: Container(
+          //   margin: EdgeInsets.all(5),
+          //   child: Row(mainAxisAlignment: MainAxisAlignment.center,
+          //     children: [
+          //     ],
+          //   )
+            // countryData == null
+            // ? Container()
+            // : MostAffectedPanel(
+            //     countryData: countryData,
+            //   ),
+        ),
+          Container(
+            padding: const EdgeInsets.all(10),
             child:Row( mainAxisAlignment: MainAxisAlignment.center,
               children: <Widget>[ 
                 Card(
@@ -280,11 +326,6 @@ class _HomePageState extends State<HomePage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.all(Radius.circular(5)),
                       color: Colors.teal,
-                      // gradient: LinearGradient(
-                      //   colors: [Colors.teal[800], Colors.teal],
-                      //   begin: Alignment.bottomCenter,
-                      //   end: Alignment.topRight,
-                      // )
                     ),
                     child : Center(
                     child: Column( 

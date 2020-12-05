@@ -75,7 +75,7 @@ class Search extends SearchDelegate{
                         child: Row(children: [
                             Text(
                               suggestionList[index]['country'],
-                              style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black/*Colors.teal[900]*/, fontSize: 16),
+                              style: GoogleFonts.cabin(fontWeight: FontWeight.bold, color: Colors.black, fontSize: 16),
                             ),
                           ]
                         )
@@ -85,199 +85,199 @@ class Search extends SearchDelegate{
                 ),
                 // Country Statistics
                 Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          margin: const EdgeInsets.symmetric(horizontal: 1.5),
-                          child:Column(
-                            children: [
-                              Container(
-                                child: Row(
-                                  children: [
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.lightBlue,
-                                          border: Border.all(color: Colors.lightBlue, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("DAILY CASES",style: GoogleFonts.cabin(color: Colors.lightBlue[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['todayCases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.deepOrange,
-                                          border: Border.all(color: Colors.deepOrange, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("DAILY DEATHS",style: GoogleFonts.cabin(color: Colors.deepOrange[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['todayDeaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.orange,
-                                          border: Border.all(color: Colors.orange, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("ACTIVE",style: GoogleFonts.cabin(color: Colors.orange[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['active'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ),
-                                    ),
-                                  ],
+                  padding: EdgeInsets.symmetric(vertical: 10),
+                  margin: const EdgeInsets.symmetric(horizontal: 1.5),
+                  child:Column(
+                    children: [
+                      Container(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.lightBlue,
+                                  border: Border.all(color: Colors.lightBlue, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
                                 ),
-                              ),
-                              Container(
-                                child: Row(
+                                child: Column(
                                   children: [
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.blue,
-                                          border: Border.all(color: Colors.blue, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("TOTAL CASES",style: GoogleFonts.cabin(color: Colors.blue[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['cases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("DAILY CASES",style: GoogleFonts.cabin(color: Colors.lightBlue[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
                                       ),
                                     ),
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.red,
-                                          border: Border.all(color: Colors.red, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("DEATHS",style: GoogleFonts.cabin(color: Colors.red[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['deaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['todayCases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
                                       ),
-                                    ),
-                                    Expanded(
-                                      child: Container(
-                                        margin: EdgeInsets.all(2),
-                                        padding: EdgeInsets.all(5),
-                                        decoration: BoxDecoration(
-                                          color: Colors.green,
-                                          border: Border.all(color: Colors.green, width: 1),
-                                          borderRadius: BorderRadius.all(Radius.circular(10))
-                                        ),
-                                        child: Column(
-                                          children: [
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("RECOVERED",style: GoogleFonts.cabin(color: Colors.green[100], fontSize: 15, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            ),
-                                            Container(
-                                              child: Row(
-                                                children: [
-                                                  Text("${NumberFormat.compact().format(suggestionList[index]['recovered'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
-                                                ],
-                                              ),
-                                            )
-                                          ],
-                                        )
-                                      ),
-                                    ),
+                                    )
                                   ],
-                                ),
+                                )
                               ),
-                            ]
-                          )
-                        )
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.deepOrange,
+                                  border: Border.all(color: Colors.deepOrange, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("DAILY DEATHS",style: GoogleFonts.cabin(color: Colors.deepOrange[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['todayDeaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.orange,
+                                  border: Border.all(color: Colors.orange, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("ACTIVE",style: GoogleFonts.cabin(color: Colors.orange[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['active'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                      Container(
+                        child: Row(
+                          children: [
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.blue,
+                                  border: Border.all(color: Colors.blue, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("TOTAL CASES",style: GoogleFonts.cabin(color: Colors.blue[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['cases'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.red,
+                                  border: Border.all(color: Colors.red, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("DEATHS",style: GoogleFonts.cabin(color: Colors.red[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['deaths'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ),
+                            ),
+                            Expanded(
+                              child: Container(
+                                margin: EdgeInsets.all(2),
+                                padding: EdgeInsets.all(5),
+                                decoration: BoxDecoration(
+                                  color: Colors.green,
+                                  border: Border.all(color: Colors.green, width: 1),
+                                  borderRadius: BorderRadius.all(Radius.circular(10))
+                                ),
+                                child: Column(
+                                  children: [
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("RECOVERED",style: GoogleFonts.cabin(color: Colors.green[100], fontSize: 15, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    ),
+                                    Container(
+                                      child: Row(
+                                        children: [
+                                          Text("${NumberFormat.compact().format(suggestionList[index]['recovered'])} ",style: GoogleFonts.cabin(color: Colors.white, fontSize: 30, fontWeight: FontWeight.bold),)
+                                        ],
+                                      ),
+                                    )
+                                  ],
+                                )
+                              ),
+                            ),
+                          ],
+                        ),
+                      ),
+                    ]
+                  )
+                )
               ]
             ),
           )
