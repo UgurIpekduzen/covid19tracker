@@ -1,3 +1,4 @@
+//Worldwide Statistics panelinde gösterilecek verilerin tutulacağı class
 class WorldwideTotal
 {
   var cases;
@@ -15,8 +16,6 @@ class WorldwideTotal
       deaths : json["deaths"],
       recovered : json["recovered"],
       updated : json["updated"],
-
-
     );
   }
 }
