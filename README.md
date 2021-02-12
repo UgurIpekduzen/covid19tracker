@@ -16,6 +16,6 @@ For help getting started with Flutter, view our
 samples, guidance on mobile development, and a full API reference.
 
 # Screenshots from App
-![ss1](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss1.jpg | width=50) 
-![ss2](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss2.jpg | width=50)
-![ss3](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss3.jpg | width=50) 
+![ss1](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss1.jpg){:height="50%" width="50%"}
+![ss2](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss2.jpg){:height="50%" width="50%"}
+![ss3](https://github.com/UgurIpekduzen/covid19tracker/blob/master/ss/ss3.jpg){:height="50%" width="50%"} 
